@@ -19,6 +19,12 @@ const Disploy = ({ good, neutral, bad }) => {
   )
 }
 
+const Total = ({ total }) => <div>all {total}</div>
+
+const Average = ({ average }) => <div>average {average}</div> 
+
+const Positive = ({ positive }) => <div>positive {positive} %</div> 
+
 const App = () => {
   const [good, setGood] = useState(0)
   const [neutral, setNeutral] = useState(0)
@@ -34,6 +40,10 @@ const App = () => {
     setBad(bad + 1)
   }
 
+  const total = good + neutral + bad
+  const average = (good * 1 + neutral * 0 + bad * -1) / total || 0
+  const positive = good / total * 100 || 0
+
   return (
     <div>
       <Header />
@@ -41,6 +51,9 @@ const App = () => {
       <Button handleClick={handleNeutralClick} text="neutral" />
       <Button handleClick={handleBadClick} text="bad" />
       <Disploy good={good} neutral={neutral} bad={bad} />
+      <Total total={total} />
+      <Average average={average} />
+      <Positive positive={positive} />
     </div>
   );
 }

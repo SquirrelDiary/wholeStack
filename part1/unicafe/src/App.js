@@ -8,22 +8,17 @@ const Button = ({ handleClick, text }) => {
   )
 }
 
-const Disploy = ({ good, neutral, bad }) => {
-  return (
-    <div>
-      <h1>statistics</h1>
-      <p>good {good}</p>
-      <p>neutral {neutral}</p>
-      <p>bad {bad}</p>
-    </div>
-  )
-}
-
-const Total = ({ total }) => <div>all {total}</div>
-
-const Average = ({ average }) => <div>average {average}</div> 
-
-const Positive = ({ positive }) => <div>positive {positive} %</div> 
+const Statistics = ({ good, neutral, bad, total, average, positive }) => (
+  <div>
+    <h1>statistics</h1>
+    <p>good {good}</p>
+    <p>neutral {neutral}</p>
+    <p>bad {bad}</p>
+    <p>all {total}</p>
+    <p>average {average}</p>
+    <p>positive {positive} %</p>
+  </div>
+)
 
 const App = () => {
   const [good, setGood] = useState(0)
@@ -50,10 +45,7 @@ const App = () => {
       <Button handleClick={handleGoodClick} text="good" />
       <Button handleClick={handleNeutralClick} text="neutral" />
       <Button handleClick={handleBadClick} text="bad" />
-      <Disploy good={good} neutral={neutral} bad={bad} />
-      <Total total={total} />
-      <Average average={average} />
-      <Positive positive={positive} />
+      <Statistics good={good} neutral={neutral} bad={bad} total={total} average={average} positive={positive} />
     </div>
   );
 }
